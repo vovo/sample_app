@@ -71,4 +71,8 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_equal mixed_case_email.downcase, @user.reload.email
   end
+
+  test "check test environment" do
+    assert Rails.env.test?
+  end
 end
