@@ -75,4 +75,8 @@ class UserTest < ActiveSupport::TestCase
   test "check test environment" do
     assert Rails.env.test?
   end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
 end
