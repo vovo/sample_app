@@ -4,6 +4,7 @@ vovo:
   name: vovo
   email: vovo@vovo.com
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 tom:
   name: tom
