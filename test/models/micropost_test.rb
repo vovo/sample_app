@@ -3,8 +3,7 @@ require 'test_helper'
 class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:vovo)
-    # This code is not idiomatically correct.
-    @micropost = Micropost.new(content: "red fox jump over", user_id: @user.id)
+    @micropost = @user.microposts.new(content: "red fox jump over")
   end
 
   test "should be valid" do
