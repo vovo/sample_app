@@ -94,6 +94,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not vovo.following?(tom)
     vovo.follow(tom)
     assert vovo.following?(tom)
+    assert tom.followers.include?(vovo)
     vovo.unfollow(tom)
     assert_not vovo.following?(tom)
   end
