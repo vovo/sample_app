@@ -38,12 +38,11 @@ if Micropost.count == 0
   end
 end
 
-if Rails.env.development? && Relationship.count == 0
-  followers = User.order(:created_at).take(6)
-  following = User.order(:created_at).take(10)
-  followers.each do |follower|
-    following.each do |followed|
-    Relationship.create!(follower_id: follower.id, followed_id: followed.id)
-    end
-  end
-end
+# Following relationships
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { | followed| user.follow(followed) }
+followers.each { | follower| follower.follow(user) }
+
